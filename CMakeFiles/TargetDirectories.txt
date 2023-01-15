@@ -1,0 +1,5 @@
+/media/minh253/D/c++project/project/CMakeFiles/rebuild_cache.dir
+/media/minh253/D/c++project/project/CMakeFiles/edit_cache.dir
+/media/minh253/D/c++project/project/CMakeFiles/serial.dir
+/media/minh253/D/c++project/project/CMakeFiles/server.dir
+/media/minh253/D/c++project/project/CMakeFiles/client.dir
