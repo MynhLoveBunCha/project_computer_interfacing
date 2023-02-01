@@ -29,6 +29,14 @@ mutex
 -
 chrono
 -
+fcntl.h
+-
+errno.h
+-
+termios.h
+-
+unistd.h
+-
 opencv2/opencv.hpp
 -
 opencv2/core/core.hpp

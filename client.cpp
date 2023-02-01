@@ -33,7 +33,6 @@ const float INPUT_HEIGHT = 640.0;
 const float SCORE_THRESHOLD = 0.2;
 const float NMS_THRESHOLD = 0.4;
 const float CONFIDENCE_THRESHOLD = 0.6;
-const int N_ALLOW_PEOPLE = 3;
 
 
 struct Detection
@@ -256,20 +255,15 @@ int main(int argc, char const* argv[])
 			imshow("Image from Server", received_frame);
 		}
 
-		// send open/close signal to uart
-		// TODO
-		// if(person_count == N_ALLOW_PEOPLE){
-
-		// }
-		//--------------------------------
+		
 
 		// Exit condition
         if(waitKey(15) >= 0){
             break;
         }
 		
-		//send something back to server (send acknownledge)
-		send(sock, hello_ptr, hello.length(), 0);	
+		//send the number of people back to server (send acknownledge)
+		send(sock, &person_count, 4, 0);	
 	}
 
 	// closing the connected socket

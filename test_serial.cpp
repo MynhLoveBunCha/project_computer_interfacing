@@ -41,7 +41,7 @@ int main(){
     
     tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
     tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-    tty.c_cc[VTIME] = 10;    // Wait for up to 5s (50 deciseconds), returning as soon as any data is received.
+    tty.c_cc[VTIME] = 50;    // Wait for up to 5s (50 deciseconds), returning as soon as any data is received.
     tty.c_cc[VMIN] = 0;
 
     // Set in/out baud rate to be 9600
@@ -61,7 +61,12 @@ int main(){
         char write_buf[256];
         
         // Write to serial port
-        strcpy(write_buf, "1");
+        if(i % 2 == 0){
+            strcpy(write_buf, "1");
+        }
+        else{
+            strcpy(write_buf, "0");
+        }
         int len = strlen(write_buf);
         cout << "Wrote " << write(serial_port, &write_buf, len) << " bytes over UART" << endl;
 
@@ -79,6 +84,7 @@ int main(){
         }
 
         printf("Read %i bytes. Received message: %s\n", num_bytes, read_buf);
+    
     }
 
     close(serial_port);
