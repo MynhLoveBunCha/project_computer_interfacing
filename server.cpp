@@ -34,6 +34,7 @@ mutex mtx;
 const int N_ALLOW_PEOPLE = 2;
 VideoCapture cap;
 
+
 void camera_opencv()
 {
 	//--- INITIALIZE VIDEOCAPTURE
@@ -53,6 +54,7 @@ void camera_opencv()
     }
 	
 }
+
 
 int init_serial(){
 	// open serial port
@@ -188,12 +190,14 @@ while(1)
 		
 		this_thread::sleep_for(std::chrono::milliseconds(100));	
 		
+
+		cout << "--------------------------------------------" << endl;
 		//wait for number of people back from client (wait acknownledge)
 		char buffer_info[4] = "";
 		valread = read(new_socket, buffer_info, 4);
 		int* people_ptr = (int*)(&buffer_info[0]);
 		int person_count = people_ptr[0];
-		cout << person_count << endl;
+		cout << "Detect " << person_count << " people" << endl;
 
 		// send open/close signal to uart
 		// TODO
@@ -220,9 +224,14 @@ while(1)
             return -1;
         }
 
-        printf("Read %i bytes. Received message: %s\n", num_bytes, read_buf);
+		if(read_buf == "1"){
+        	printf("Read %i bytes. Received message: %s\n ~ OPEN", num_bytes, read_buf);
+		}
+		else{
+        	printf("Read %i bytes. Received message: %s\n ~ CLOSE", num_bytes, read_buf);
+		}
     
-		//--------------------------------
+		cout << "--------------------------------------------" << endl;
 
 
 		if(valread <= 0) 
