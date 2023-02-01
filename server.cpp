@@ -225,13 +225,12 @@ while(1)
         }
 
 		if(read_buf == "1"){
-        	printf("Read %i bytes. Received message: %s\n ~ OPEN", num_bytes, read_buf);
+        	printf("Read %i bytes. Received message: %s ~ OPEN\n", num_bytes, read_buf);
 		}
 		else{
-        	printf("Read %i bytes. Received message: %s\n ~ CLOSE", num_bytes, read_buf);
+        	printf("Read %i bytes. Received message: %s ~ CLOSE\n", num_bytes, read_buf);
 		}
     
-		cout << "--------------------------------------------" << endl;
 
 
 		if(valread <= 0) 
