@@ -87,7 +87,7 @@ int init_serial(){
     
     tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
     tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-    tty.c_cc[VTIME] = 5;    // Wait for up to 5s (50 deciseconds), returning as soon as any data is received.
+    tty.c_cc[VTIME] = 5;    // Wait for up to 0.5s (5 deciseconds), returning as soon as any data is received.
     tty.c_cc[VMIN] = 0;
 
     // Set in/out baud rate to be 9600
