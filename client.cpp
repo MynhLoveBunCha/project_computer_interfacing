@@ -119,6 +119,7 @@ void detect(Mat &image, dnn::Net &net, vector<Detection> &output, const vector<s
 
     }
 
+	// non-maximum suppression
     vector<int> nms_result;
     dnn::NMSBoxes(boxes, confidences, SCORE_THRESHOLD, NMS_THRESHOLD, nms_result);
     for (int i = 0; i < nms_result.size(); i++) {
